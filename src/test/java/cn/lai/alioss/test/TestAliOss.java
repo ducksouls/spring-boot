@@ -1,4 +1,4 @@
-package cn.lai.alioss;
+package cn.lai.alioss.test;
 
 import cn.lai.alioss.common.util.AliyunOSSUtil;
 import com.aliyun.oss.OSS;
@@ -6,9 +6,6 @@ import com.aliyun.oss.OSSClientBuilder;
 import org.junit.Test;
 
 import java.io.File;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
 
 public class TestAliOss {
     @Test
@@ -33,17 +30,19 @@ public class TestAliOss {
 
     @Test
     public void testUpload(){
-        //彻底搞懂读取文件。。。。
-        String path = this.getClass().getResource("/batman.jpg").getPath();
-        File file = new File(path);
-        AliyunOSSUtil.upLoad(new File(path));
+        /**
+         * 1. ClassLoader.getSystemResource("")
+         * 2. this.getClass() .getClassLoader().getResource("")
+         * 3. this.getClass().getResource("/batman.jpg")
+         * 4. file:/F:/IDEA_program/spring-boot/target/test-classes/
+         * file:/F:/IDEA_program/spring-boot/target/test-classes/
+         * 以上都是根据classpath查找文件，但下面这个只会根据.class文件存放的位置
+         * 去查找
+         * this.getClass().getResource("batman.jpg")
+         * file:/F:/IDEA_program/spring-boot/target/test-classes/cn/lai/alioss/test/
+         */
+        String path = Thread.currentThread().getContextClassLoader().getResource("batman.jpg").getPath();
+        File file = new File("batman.jpg");
+        AliyunOSSUtil.upLoad(new File("batman.jpg"));
     }
-
-    public static void main(String[] args) {
-        String path = TestAliOss.class.getResource("/batman.jpg").getPath();
-        File file = new File(path);
-        String s = AliyunOSSUtil.upLoad(new File(path));
-        System.out.println(s);
-    }
-//    https://lai-img.oss-cn-shenzhen.aliyuncs.com/test/2019-10-10/b7ead215fa644f5abd2b9942d89d95b2-batman.jpg
 }

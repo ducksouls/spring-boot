@@ -23,8 +23,8 @@ public class TestOssAPI {
     public void BeforeTets(){
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-        accessKeyId = "LTAI4FeUzn5qBDe3sj9mNnaZ";
-        accessKeySecret = "4Pji4roNfvGJaHrVxtt77gjMBYySPk";
+        accessKeyId = "LTAI4FfTPTbFqt5sfxiG9SZa";
+        accessKeySecret = "L4fRnTdFpgyFeujUL6vKwJZedrfw2z";
         bucketName = "lai-img";
         objName = "testStr";
         // 创建OSSClient实例。
@@ -35,8 +35,8 @@ public class TestOssAPI {
     public void testCreateBucket() {
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         String endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-        String accessKeyId = "LTAI4FeUzn5qBDe3sj9mNnaZ";
-        String accessKeySecret = "4Pji4roNfvGJaHrVxtt77gjMBYySPk";
+        String accessKeyId = "LTAI4FfTPTbFqt5sfxiG9SZa";
+        String accessKeySecret = "L4fRnTdFpgyFeujUL6vKwJZedrfw2z";
         String bucketName = "lai-img";
 
         // 创建OSSClient实例。
@@ -54,8 +54,8 @@ public class TestOssAPI {
     public void testUpload(){
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         String endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-        String accessKeyId = "LTAI4FeUzn5qBDe3sj9mNnaZ";
-        String accessKeySecret = "4Pji4roNfvGJaHrVxtt77gjMBYySPk";
+        String accessKeyId = "LTAI4FfTPTbFqt5sfxiG9SZa";
+        String accessKeySecret = "L4fRnTdFpgyFeujUL6vKwJZedrfw2z";
         String bucketName = "lai-img";
         String objName = "testStr1";
         // 创建OSSClient实例。
@@ -71,8 +71,8 @@ public class TestOssAPI {
     public void testDownLoad() throws IOException {
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         String endpoint = "http://oss-cn-shenzhen.aliyuncs.com";
-        String accessKeyId = "LTAI4FeUzn5qBDe3sj9mNnaZ";
-        String accessKeySecret = "4Pji4roNfvGJaHrVxtt77gjMBYySPk";
+        String accessKeyId = "LTAI4FfTPTbFqt5sfxiG9SZa";
+        String accessKeySecret = "L4fRnTdFpgyFeujUL6vKwJZedrfw2z";
         String bucketName = "lai-img";
         String objName = "testStr";
         // 创建OSSClient实例。

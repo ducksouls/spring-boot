@@ -12,8 +12,8 @@ public class AliyunOSSConfigConstant {
 
     public static final String BUCKET_NAME = "lai-img";
     public static final String END_POINT = "http://oss-cn-shenzhen.aliyuncs.com";
-    public static final String ACCESS_KEY_ID = "LTAI4FeUzn5qBDe3sj9mNnaZ";
-    public static final String ACCESS_KEY_SECRET = "4Pji4roNfvGJaHrVxtt77gjMBYySPk";
-    public static final String FILE_HOST = "test";
+    public static final String ACCESS_KEY_ID = "LTAI4FfTPTbFqt5sfxiG9SZa";
+    public static final String ACCESS_KEY_SECRET = "L4fRnTdFpgyFeujUL6vKwJZedrfw2z";
+    public static final String FILE_HOST = "http://lai-img.oss-cn-shenzhen.aliyuncs.com/";
 
 }
