@@ -4,6 +4,7 @@ import cn.lai.alioss.common.constants.AliyunOSSConfigConstant;
 import com.aliyun.oss.*;
 import com.aliyun.oss.model.*;
 import org.slf4j.LoggerFactory;
+import org.springframework.lang.UsesSunHttpServer;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
@@ -47,12 +48,9 @@ public class AliyunOSSUtil {
             e.printStackTrace();
         }
         logger.info("------------文件上传-----------" + file.getName());
-
-
         //2. 获取ossClient
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         //3. 判断bucket是否存在，不存在则创建
-
         try {
             if(!ossClient.doesBucketExist(bucketName)){
                 ossClient.createBucket(bucketName);
@@ -65,10 +63,10 @@ public class AliyunOSSUtil {
             }
             //4. 上传
             String upFileName =   UUID.randomUUID().toString().replace("-", "") + "-" + file.getName();
-            PutObjectResult testImg = ossClient.putObject(bucketName, upFileName, file);
+            PutObjectResult testImg = ossClient.putObject(bucketName, "img/"+upFileName, file);
 
             if (isImage) {//如果是图片，则图片的URL为：....
-                FILE_URL =   fileHost + upFileName;
+                FILE_URL =   fileHost + "img/" +upFileName;
             } else {
                 FILE_URL = "非图片，不可预览。文件路径为：" + upFileName;
             }
@@ -88,4 +86,42 @@ public class AliyunOSSUtil {
         }
         return FILE_URL;
     }
+
+    /**
+     * 下载
+     * @param objName oss服务器上的图片名字
+     * @param localName 存储在本地的图片名字
+     */
+    public static void downLoad(String objName,String localName) {
+        OSS client = null;
+        try {
+            client = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+            // 下载OSS文件到本地文件。如果指定的本地文件存在会覆盖，不存在则新建。
+            String s = objName.split("/")[1];
+            File parent = new File("img/");
+            File file = new File(parent,s);
+            if (!parent.exists()) {
+                parent.mkdirs();
+            }
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            ObjectMetadata object = client.getObject(new GetObjectRequest(bucketName, objName), file);
+
+            logger.info("---------下载成功-------"+localName);
+        } catch (OSSException e) {
+            logger.error(e.getMessage());
+        } catch (ClientException e) {
+            logger.error(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (client !=null) {
+                client.shutdown();
+            }
+        }
+    }
+
+    public
 }
+Long01@Hua

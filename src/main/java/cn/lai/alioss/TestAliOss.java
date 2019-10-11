@@ -36,7 +36,8 @@ public class TestAliOss {
         //彻底搞懂读取文件。。。。
         String path = this.getClass().getResource("/batman.jpg").getPath();
         File file = new File(path);
-        AliyunOSSUtil.upLoad(new File(path));
+        String s = AliyunOSSUtil.upLoad(new File(path));
+        System.out.println(s);
     }
 
     public static void main(String[] args) {
@@ -45,5 +46,14 @@ public class TestAliOss {
         String s = AliyunOSSUtil.upLoad(new File(path));
         System.out.println(s);
     }
-//    https://lai-img.oss-cn-shenzhen.aliyuncs.com/test/2019-10-10/b7ead215fa644f5abd2b9942d89d95b2-batman.jpg
+
+    @Test
+    public void testDownLoad(){
+        AliyunOSSUtil.downLoad("img/6e6f64a35a814de5bf15f96e247985c6-batman.jpg",
+                "6e6f64a35a814de5bf15f96e247985c6-batman.jpg");
+    }
 }
+
+//http://lai-img.oss-cn-shenzhen.aliyuncs.com/7204ba390e4c4263a68587e0217b66eb-batman.jpg
+//https://lai-img.oss-cn-shenzhen.aliyuncs.com/batman.jpg
+//https://lai-img.oss-cn-hangzhou.aliyuncs.com/testImg
