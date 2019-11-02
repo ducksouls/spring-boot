@@ -122,6 +122,4 @@ public class AliyunOSSUtil {
         }
     }
 
-    public
 }
-Long01@Hua
